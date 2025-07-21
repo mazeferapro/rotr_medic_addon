@@ -1,0 +1,50 @@
+include("shared.lua")
+
+function ENT:Draw()
+	self:DrawModel()
+	if LocalPlayer():GetPos():DistToSqr(self:GetPos()) >= 50000 then return end
+	local White = (Color(255, 255, 255))
+	local Black = (Color(0, 0, 0))
+	local SurfaceWhite = Color(255, 255, 255, 255)
+	local SurfaceBlack = Color(0, 0, 0, 200)
+	local Pos = self:GetPos()
+	local Ang = self:GetAngles()
+	
+	cam.Start3D2D(Pos + Ang:Up() * 4.2 + Ang:Right() * -1.8 + Ang:Forward() * -3.9, Ang, 0.05)
+        draw.DrawText(self.PrintName, "Medicinefont4", 11, -52, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+	
+	cam.Start3D2D(Pos + Ang:Up() * 4.2 + Ang:Right() * 1.2 + Ang:Forward() * -4.7, Ang, 0.06)
+		surface.SetDrawColor(SurfaceWhite)
+		surface.SetMaterial(Material("pills/combine.png"))
+		surface.DrawTexturedRect(-10,-100,30,30)
+		draw.DrawText(self:GetNWInt("pills_mass").." mg", "Medicinefont3", 70, 20, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText(self:GetNWInt("have_pills").." "..self:GetNWString("pills_form"), "Medicinefont3", 70, 40, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+	
+	Ang:RotateAroundAxis(Ang:Up(), 90)
+	cam.Start3D2D(Pos + Ang:Up() * 4.2 + Ang:Right() * 1.2 + Ang:Forward() * -4.7, Ang, 0.06)
+        draw.DrawText("CIVILFARM", "Medicinefont3", 30, -110, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+	
+	Ang:RotateAroundAxis(Ang:Up(), -90)
+	Ang:RotateAroundAxis(Ang:Forward(), 90)
+	cam.Start3D2D(Pos + Ang:Up() * 5.5 + Ang:Right() * 5 + Ang:Forward() * -5, Ang, 0.06)
+        draw.DrawText("Produced:", "Medicinefont3", 40, -70, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText("11.10.2033", "Medicinefont3", 40, -50, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+	
+	Ang:RotateAroundAxis(Ang:Right(), 90)
+	cam.Start3D2D(Pos + Ang:Up() * 6 + Ang:Right() * 5 + Ang:Forward() * -5, Ang, 0.06)
+        draw.DrawText("POWERED BY RU", "Medicinefont3", 0, -130, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText("HL2RP PROJECT", "Medicinefont3", 0, -110, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText("AND PUTIN", "Medicinefont3", 0, -90, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+	
+	Ang:RotateAroundAxis(Ang:Right(), 180)
+	cam.Start3D2D(Pos + Ang:Up() * 6 + Ang:Right() * 5 + Ang:Forward() * -5, Ang, 0.06)
+        draw.DrawText("DESIGNED", "Medicinefont3", 45, -135, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText("FOR USE IN", "Medicinefont3", 45, -115, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.DrawText("HOSPITAL", "Medicinefont3", 45, -95, Black, TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	cam.End3D2D()
+end

@@ -1,0 +1,7 @@
+include("mm_function.lua")
+hook.Add("PlayerInitialSpawn", "MedicineModRegenSpawn", RegenMedicine)
+hook.Add("PlayerSilentDeath", "MedicineModRegenSilentDeath", RegenMedicine) 
+hook.Add("PlayerSpawn", "MedicineModRegenSpawn", RegenMedicine)
+hook.Add("Think", "MedicineModWork", WorkMedicine)
+hook.Add("Think", "MedicineModWorkAttention", WorkMedicineAttention)
+hook.Add("Think", "MedicineModWorkSoundPlay", WorkMedicineSoundPlay)
